@@ -69,6 +69,21 @@ app.post('/submit-form', async (req, res) => {
   }
 });
 
+app.get("/emails", async (req, res) => {
+  try {
+    // Fetch all emails from the database
+    const emails = await FormData.findAll({
+      attributes: ["email"],
+    });
+
+    res.json(emails);
+  } catch (error) {
+    console.error("Error fetching emails:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
