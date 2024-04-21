@@ -65,7 +65,7 @@ app.post('/submit-form', async (req, res) => {
     res.status(200).send('Form data submitted successfully!');
   } catch (error) {
     console.error('Error submitting form data:', error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).send('Internal Server Error', error);
   }
 });
 
