@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { Sequelize, DataTypes } = require('sequelize');
+const cors = require("cors");
 
 const app = express();
 const port =  3003;
@@ -41,6 +42,11 @@ const FormData = sequelize.define('form_data', {
 
 // Middleware to parse JSON request body
 app.use(bodyParser.json());
+app.use(cors()); 
+
+app.get('/', (req, res) => {
+    res.send('Server is working!');
+});
 
 // Route to handle form submission
 app.post('/submit-form', async (req, res) => {
