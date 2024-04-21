@@ -81,9 +81,7 @@ app.post("/submit-form", async (req, res) => {
 app.get("/emails", async (req, res) => {
   try {
     // Fetch all emails from the database
-    const emails = await FormData.findAll({
-      attributes: ["email"],
-    });
+    const emails = await FormData.findAll();
 
     res.json(emails);
   } catch (error) {
